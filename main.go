@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"sort"
+	"strings"
 )
 
 func main() {
@@ -30,8 +31,10 @@ func main() {
 	lines = lines[1:]
 	sort.SliceStable(lines, func(i, j int) bool {
 		for col := 0; col < len(header); col++ {
-			if lines[i][col] != lines[j][col] {
-				return lines[i][col] < lines[j][col]
+			str1 := strings.ToLower(lines[i][col])
+			str2 := strings.ToLower(lines[j][col])
+			if str1 != str2 {
+				return str1 < str2
 			}
 		}
 		return false
